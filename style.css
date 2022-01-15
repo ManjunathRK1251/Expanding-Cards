@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Muli", sans-serif;
+  display: flex;
+  align-items: center; /*to center horizontally*/
+  justify-content: center; /*to center vertically*/
+  height: 100vh; /* center vertically doesn't work since body doesn't have height, so we need to specify this in vh PS: 100vh it occupies full screen height*/
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  background-size: cover 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer; /*when we hover over it cursor changes to pointer icon*/
+  flex: 0.5; /*this makes all the images even in size*/
+  margin: 10px;
+  position: relative;
+  transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+  position: absolute;
+  font-size: 24px;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0; /*it makes the text invisible in inactive state*/
+}
+
+.panel.active {
+  flex: 4;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s; /*0.4s is the delay*/
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  /* so this code below basically hides the 4th and 5th image if the screen width is less than 480px */
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
